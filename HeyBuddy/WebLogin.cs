@@ -73,7 +73,7 @@ namespace HeyBuddy
         private void btnWebLogin_Click(object sender, EventArgs e)
         {
             btnWebConfirm.Enabled = true;
-            textBox1.Text = "http://play.eslgaming.com/admin_tickets";
+            textBox1.Text = "https://play.eslgaming.com/hungary/admin_tickets/?mytickets=t&killcache=true";
             geckoWebBrowser1.Navigate(textBox1.Text);
             btnWebLogin.Text = "Redirecting...";
             new System.Threading.Timer((Object stateInfo) => { Console.WriteLine("7 sec"); }, new AutoResetEvent(false), 0, 7000);
@@ -157,9 +157,13 @@ namespace HeyBuddy
         {
             buddyactive = true;
 
+            Notification_Info("Activated!", "Please do NOT close the main window!");
 
             while(buddyactive)
             {
+                
+                //this.Hide();
+
                 Wait(5000); // 1 sec = 1000
                 GetHtml();
 
@@ -168,30 +172,71 @@ namespace HeyBuddy
                 string file1 = folder + logname + (filenum - 1)+ ".txt";
                 string file2 = folder + logname + (filenum - 2) + ".txt";
 
+                // <span id="userbar_timezone_time">14/02/20<br> 20:22h <span style="font-size: 9px">CET</span></span>
+                string time = DateTime.Now.ToString("HH:mm");
+                time = " "+ time + "h ";
+
+                string span = "<span id=";
+                const char cat = '"';
+                string userbar = "userbar_timezone_time";
+                string eV = ">";
+                string br = "<br>";
+                string span2 = "<span style=";
+                string font = "font-size: 9px";
+                string cet = ">CET</span></span>";
+                DateTime date = DateTime.Now;
+                string format = "yy";
+                string year = (date.ToString(format));
+                format = "dd";
+                string day = (date.ToString(format));
+                format = "MM";
+                string month = (date.ToString(format));
+
+                string search = "            " + span + cat + userbar + cat + eV + day + "/" + month + "/" + year + br + time + span2 + cat + font + cat + cet;
+                Console.WriteLine(search);
 
 
+                //<div style="display: none; visibility: hidden;"><script type="text/javascript">var axel=Math.random()+"",a=1E13*axel;document.write('\x3ciframe src\x3d"https://5663751.fls.doubleclick.net/activityi;src\x3d5663751;type\x3dview-0;cat\x3dpage-0;u1\x3dplay-eslgaming-Hungary;dc_lat\x3d;dc_rdid\x3d;tag_for_child_directed_treatment\x3d;ord\x3d'+a+'?" width\x3d"1" height\x3d"1" frameborder\x3d"0" style\x3d"display:none"\x3e\x3c/iframe\x3e');</script><iframe src="https://5663751.fls.doubleclick.net/activityi;src=5663751;type=view-0;cat=page-0;u1=play-eslgaming-Hungary;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=7609103712189.395?" style="display:none" frameborder="0" height="1" width="1"></iframe>
+                
 
+                var tempFile = Path.GetTempFileName();
+                var linesToKeep = File.ReadLines(file1).Where(l => l != search);
 
+                File.WriteAllLines(tempFile, linesToKeep);
 
+                File.Delete(file1);
+                File.Move(tempFile, file1);
 
-                if (filenum > 2)
+                string line = null;
+                int line_number = 0;
+                int line_to_delete = 2365;
+
+                string sourcefile = System.IO.Path.Combine(folder, file1);
+                string destFile = System.IO.Path.Combine(folder, "checkme.txt");
+                System.IO.File.Copy(sourcefile, destFile, true);
+
+                using (StreamReader reader = new StreamReader(destFile))
                 {
-                    string line = null;
-                    string line_to_delete = "<!--<![endif]";
-
-                    using (StreamReader reader = new StreamReader(file1))
+                    using (StreamWriter writer = new StreamWriter(file1))
                     {
-                        using (StreamWriter writer = new StreamWriter(file2))
+                        while ((line = reader.ReadLine()) != null)
                         {
-                            while ((line = reader.ReadLine()) != null)
-                            {
-                                if (String.Compare(line, line_to_delete) == 0)
-                                    continue;
+                            line_number++;
 
-                                writer.WriteLine(line);
-                            }
+                            if (line_number == line_to_delete)
+                                continue;
+
+                            writer.WriteLine(line);
                         }
                     }
+                }
+
+
+
+                if (filenum > 4)
+                {
+                    geckoWebBrowser1.Navigate(textBox1.Text);
+
 
                     if (FileCompare(file1, file2))
                     {

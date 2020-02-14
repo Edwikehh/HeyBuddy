@@ -58,6 +58,7 @@ namespace HeyBuddy
             btnMain.Text = "MAIN";
             btnMain.Enabled = false;
             btnSettings.Text = "SETTINGS";
+            btnExit.Text = "EXIT";
             
         }
 
@@ -83,6 +84,11 @@ namespace HeyBuddy
             btnSettings.Enabled = true;
             settings1.Hide();
             welcome1.Show();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

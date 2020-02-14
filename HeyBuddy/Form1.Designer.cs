@@ -37,12 +37,14 @@
             this.popUp = new System.Windows.Forms.NotifyIcon(this.components);
             this.settings1 = new HeyBuddy.Settings();
             this.welcome1 = new HeyBuddy.Welcome();
+            this.btnExit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.btnSettings);
             this.panel1.Controls.Add(this.btnMain);
             this.panel1.Controls.Add(this.label1);
@@ -87,6 +89,14 @@
             resources.ApplyResources(this.welcome1, "welcome1");
             this.welcome1.Name = "welcome1";
             // 
+            // btnExit
+            // 
+            resources.ApplyResources(this.btnExit, "btnExit");
+            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(216)))), ((int)(((byte)(220)))));
+            this.btnExit.Name = "btnExit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -113,6 +123,7 @@
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.NotifyIcon popUp;
         private Settings settings1;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 
