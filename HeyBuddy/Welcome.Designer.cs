@@ -35,7 +35,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(197, 189);
+            this.label1.Location = new System.Drawing.Point(149, 170);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(273, 55);
             this.label1.TabIndex = 0;
@@ -49,6 +49,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Welcome";
             this.Size = new System.Drawing.Size(619, 427);
+            this.Load += new System.EventHandler(this.Welcome_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

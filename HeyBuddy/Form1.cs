@@ -58,6 +58,7 @@ namespace HeyBuddy
         {
             appdataLoc = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             InitializeComponent();
+
         }
 
         private void LoadBtn()
@@ -71,6 +72,7 @@ namespace HeyBuddy
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            labelVersion.Text = "0.0.1 - PUBV";
             settings1.Hide();
             LoadBtn();
             FolderExist();

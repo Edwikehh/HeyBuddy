@@ -34,18 +34,20 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnMain = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.labelMin = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
             this.popUp = new System.Windows.Forms.NotifyIcon(this.components);
             this.settings1 = new HeyBuddy.Settings();
             this.welcome1 = new HeyBuddy.Welcome();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelVersion = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.panel1.Controls.Add(this.labelVersion);
             this.panel1.Controls.Add(this.labelClose);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.labelMin);
@@ -82,12 +84,6 @@
             this.btnMain.UseVisualStyleBackColor = true;
             this.btnMain.Click += new System.EventHandler(this.btnMain_Click);
             // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Name = "label1";
-            // 
             // labelMin
             // 
             resources.ApplyResources(this.labelMin, "labelMin");
@@ -118,6 +114,18 @@
             resources.ApplyResources(this.welcome1, "welcome1");
             this.welcome1.Name = "welcome1";
             // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Name = "label1";
+            // 
+            // labelVersion
+            // 
+            resources.ApplyResources(this.labelVersion, "labelVersion");
+            this.labelVersion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelVersion.Name = "labelVersion";
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -141,7 +149,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
         private Welcome welcome1;
         private System.Windows.Forms.Button btnMain;
         private System.Windows.Forms.Button btnSettings;
@@ -150,6 +157,8 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label labelMin;
         private System.Windows.Forms.Label labelClose;
+        private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.Label label1;
     }
 }
 

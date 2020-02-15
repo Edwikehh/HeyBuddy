@@ -16,5 +16,10 @@ namespace HeyBuddy
         {
             InitializeComponent();
         }
+
+        private void Welcome_Load(object sender, EventArgs e)
+        {
+            label1.Text = "Debug text";
+        }
     }
 }
