@@ -89,7 +89,7 @@
             this.Controls.Add(this.stgSecBox);
             this.Controls.Add(this.stgSec);
             this.Name = "Settings";
-            this.Size = new System.Drawing.Size(619, 454);
+            this.Size = new System.Drawing.Size(619, 427);
             this.Load += new System.EventHandler(this.Settings_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

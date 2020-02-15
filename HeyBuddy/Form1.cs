@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,12 @@ namespace HeyBuddy
 {
     public partial class Form1 : Form
     {
+
+
+        int mov;
+        int movX;
+        int movY;
+
 
         string appLoc = ".HeyBuddy/log";
         string appdataLoc;
@@ -58,7 +65,7 @@ namespace HeyBuddy
             btnMain.Text = "MAIN";
             btnMain.Enabled = false;
             btnSettings.Text = "SETTINGS";
-            btnExit.Text = "EXIT";
+            btnExit.Text = "FORCE EXIT";
             
         }
 
@@ -89,6 +96,37 @@ namespace HeyBuddy
         private void btnExit_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        private void labelClose_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void labelMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void panel1_MousDown(object sender, MouseEventArgs e)
+        {
+            mov = 1;
+            movX = e.X;
+            movY = e.Y;
+
+        }
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+               if(mov == 1)
+            {
+                this.SetDesktopLocation(MousePosition.X - movX, MousePosition.Y - movY);
+            }
+        
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mov = 0;
         }
     }
 }
